@@ -1,0 +1,31 @@
+--- 
+- hosts: demo
+  user: ansible
+  become: yes
+  vars:
+    package: httpd
+    packageG: git
+    sstate: start
+    src_location: https://github.com/geetaArun/demo
+    dest_location: /var/www/html/mydemo
+  tasks:
+   - name: install "{{package}}" server
+     action: yum name="{{package}}" state=present
+   - name: start "{{package}}" service
+     action: service name="{{package}}" state={{sstate}}
+   - name: install "{{packageG}}" 
+     action: yum name="{{packageG}}" state=present
+  - name: clone a url
+    git:
+      repo: "{{src_location}}"
+      dest: "{{dest_location}}"
+      clone: yes
+   - name: git clone a url another way
+     action: name="{{packageG}}" clone repo="{{src_location}}" dest="{{dest_location}}"
+
+# ansible-playbook variable_example.yaml 
+# run adhoc comd to check
+# ansible demo -b -a "whereis httpd"
+# open public-ip/ on browser
+# you can overwrite the valuse fo the vars defined in the playbook by passing values on the command prompt
+# ansible-playbook varibale_example.yaml --extra-vars package=docker

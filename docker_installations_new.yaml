@@ -1,0 +1,11 @@
+---
+- hosts : demo
+  user: ansible
+  become: yes
+  connection: yes
+  tasks:
+     - name: install docker in nodes
+       action: yum name=docker state=present
+
+       # to execute this playbook, run the eblow cmd
+       # ansible-playbook docker_installations_new.yaml

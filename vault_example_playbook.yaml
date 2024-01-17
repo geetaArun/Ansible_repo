@@ -1,0 +1,18 @@
+# Keep the secrets in vault
+# securely keep the data in password protected file, then use ansible vaults
+# ansible-vault create geetavault.yaml 
+# this prompts for vault password
+# confirm the password again
+# then create any proteded playbook you want to create
+  ---
+  - host: demo
+    become: yes
+    connection: yes
+    tasks:
+      - name: install docker in nodes
+        action: yum name=docker state=present
+
+
+# ansible-vault edit geetavault.yaml
+# ansible-vault rekey geetavault.yaml ( change the password for already created file)
+# ansible-playbook geetavault.yaml --ask-vault-pass

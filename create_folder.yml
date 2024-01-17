@@ -1,0 +1,18 @@
+# create a folder
+---
+- hosts: demo
+  user: ansible
+  become: yes
+
+  tasks:
+    - name: create a folder
+      action: file name=mydirectory state=directory
+    - name: other way of doing the same
+      file:
+        path: /home/ansible/mydir
+        state: directory
+      
+
+#ansible-playbook create_folder.yml
+#ansible demo -a "ls" -->adhoc command to check the creation of folder
+# ansible demo -b -m command -a ls --> module

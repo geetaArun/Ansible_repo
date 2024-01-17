@@ -1,0 +1,8 @@
+https://www.middlewareinventory.com/blog/ansible-playbook-example/
+
+https://phoenixnap.com/kb/ansible-playbook
+
+https://phoenixnap.com/kb/ansible-create-file
+
+https://www.devopsschool.com/tutorial/ansible/ansible-linux-playbooks.html
+

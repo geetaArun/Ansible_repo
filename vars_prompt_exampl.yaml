@@ -1,0 +1,23 @@
+---
+- hosts: demo
+  become: yes
+  vars_prompt:
+    - name: pkg_name
+      prompt: Enter  your package name
+      private: false
+    - name: pkg_state
+      prompt: Enter the package state
+      private: false
+  tasks:
+    - name: Install Package
+      action: yum name={{pkg_name}} state={{pkg_state}}
+    - name: Start the service
+      action: service name={{pkg_name}} state=started
+
+
+
+      # ansible-playbook vars_prompt_example.yaml
+      # it prompts for the variable inputs defined under vars_prompts
+      # Enter your package name
+      # Enter the package syaye
+    

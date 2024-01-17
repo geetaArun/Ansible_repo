@@ -1,0 +1,17 @@
+---
+- name: exploring custom variables in a file
+  hosts: demo
+  become: yes
+  vars_files:  #this will show the variables presnent in the file
+    - variables.yaml
+  tasks:
+    - name: update yum repository
+      command: yum update 
+    - name: install {{pkg_name}} on webhosts
+      package: name={{pkg_name}} state={{pkg_state}}
+    - name: create a file on server
+      file: path={{file_path}} state={{file_state}}
+
+
+      # ansible-playbook apply.yaml
+      # ansible demo -a "ls /tmp"

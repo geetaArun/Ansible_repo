@@ -1,0 +1,10 @@
+---
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+     - name: remove docker
+       action: yum name=docker state=absent
+     - name: install apache
+       action: yum name=httpd state=present

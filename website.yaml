@@ -1,0 +1,22 @@
+---
+- hosts: demo
+  user: ansible
+  become: yes
+  tasks:
+    - name: installing apache server
+      action: yum name=httpd state=present
+    - name: restarting the apache service
+      action: service name=httpd state=restarted
+    - name: copy the index file from home to html folder
+      action: copy src=/home/ansible/index.html dest=/var/www/html
+    - name: copy abc.txt as geeta.txt at destination
+      action: copy src=/home/ansible/abc.txt dest=/var/www/html/geeta.txt
+
+
+
+
+
+    # ansible-playbook website.yaml
+    # 
+    # view the web page index.html on browser as http://public-ip
+    # view the web page geeta on browser as http://public-ip/geeta.txt

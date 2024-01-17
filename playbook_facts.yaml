@@ -1,0 +1,12 @@
+---
+- hosts: demo
+  tasks: show ip address of the host servers
+  debug:
+     msg="the ip address of the host os {{ansible_default_ipv4.address}}"
+  - name: print variables
+    debug:
+      var=ansible_default_ipv4.address
+
+      # build in ansible facts
+      # ansible facts are the details collected of the nodes while executing the play book
+      # ansible-playbook playbook_facts.yaml

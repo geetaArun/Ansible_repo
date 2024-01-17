@@ -1,0 +1,26 @@
+---
+- hots: demo
+  become: yes
+  tasks:
+    - name: add list of used in my node
+      user: name='{{itme}}' state=present
+      with_items:
+        - geeta
+        - Deep
+        - Shreee
+        - jay
+        - amit
+        - manu
+    - name: Install multiple s/w
+      action: yum name='{{item}}'' state=present
+      with_items:
+        - docker
+        - wget
+        - zip
+        - httpd
+
+
+# ansible-playbook loops_example_playbook.yaml
+# ansible demo -b -a "grep geeta /etc/passwd" --> check if user is created
+# Loops used to repeat the tasks 
+# if I want to create 100 users, then use loops, with a single task you can use loops using that single task.

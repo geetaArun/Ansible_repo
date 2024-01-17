@@ -1,0 +1,6 @@
+hosts: Defines on which remote hosts from your Ansible inventory file you want to execute the task. All means that every host receives the command, but you can also enter the name of a host category or one individual host.
+tasks: Announces that the remote host needs to perform a task.
+name: Lets you define a name for the task. The name is for your reference only and has no influence on the task itself.
+file: Engages Ansible’s file module to create a new file.
+path: Defines the path for the new file on the remote host’s hard drive.
+state: Similar to the touch command in the Ubuntu terminal, entering touch creates an empty file in the location you chose.

@@ -1,0 +1,25 @@
+---
+- hosts: demo
+  become: yes
+  tasks:
+    - name: install apache
+      action: yum name=httpd state=present #if apache is installed
+      notify: restart apache # then notify works, notify goes to handlers
+    - name: install docker
+      action: yum name=docker state=present
+      notify: restart docker
+    handlers:
+      - name: restart apache
+        action: service name=httpd state=restarted
+      - name: restart docker
+        action: service name=docker state=restrted
+
+
+
+
+# ansible-playbook handlerx_playbook.yaml"
+# if ansible demo -b -a "yum remove docker -y", then handler wont get executed
+# Handlers: a perticular task is dependent on another task then we use handlers
+# if apache is installed then only start apache service
+# if first condition is satisfied, only then the second condition works
+# conditional statements in ansible are called handlers
